@@ -1,0 +1,108 @@
+:root{
+  --white:#fff;--navy:#0B1F4B;--navy-2:#13306F;--sky:#38BDF8;--sky-deep:#0369A1;
+  --sky-soft:#E8F5FD;--ink:#0B1F4B;--muted:#44557A;--line:#D3E3F2;
+  --radius:16px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;background:var(--white);color:var(--ink);font:400 1.0625rem/1.65 "Nunito Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Sora,"Nunito Sans",system-ui,sans-serif;line-height:1.15;letter-spacing:-.02em;margin:0}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.skip{position:absolute;left:-999px;top:0;background:var(--navy);color:#fff;padding:.7rem 1rem;z-index:100}
+.skip:focus{left:0}
+
+/* Botones */
+.btn{display:inline-block;background:var(--navy);color:#fff;font-weight:700;text-decoration:none;padding:.85rem 1.4rem;border-radius:999px;border:2px solid var(--navy);transition:background .2s,color .2s}
+.btn:hover{background:var(--navy-2);border-color:var(--navy-2)}
+.btn-small{padding:.5rem 1.1rem;font-size:.95rem}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.btn-ghost:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* Cabecera */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;min-height:4rem}
+.brand img{height:36px;width:auto}
+#menu{display:flex;align-items:center;gap:1.5rem}
+#menu a:not(.btn){text-decoration:none;font-weight:600;color:var(--muted)}
+#menu a:not(.btn):hover{color:var(--navy)}
+.menu-toggle{display:none;background:none;border:2px solid var(--line);border-radius:10px;width:2.8rem;height:2.8rem;cursor:pointer;position:relative}
+.menu-toggle i,.menu-toggle i::before,.menu-toggle i::after{content:"";position:absolute;left:.7rem;right:.7rem;height:2px;background:var(--navy);border-radius:2px}
+.menu-toggle i{top:50%}
+.menu-toggle i::before{left:0;right:0;top:-7px}
+.menu-toggle i::after{left:0;right:0;top:7px}
+
+/* Portada */
+.hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:5rem 0 5.5rem}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:800;max-width:18ch}
+.hero p{max-width:38rem;margin:1.25rem 0 2rem;font-size:1.2rem;color:#D6E6FA}
+.hero .btn:not(.btn-ghost){background:var(--sky);border-color:var(--sky);color:var(--navy)}
+.hero .btn:not(.btn-ghost):hover{background:#7DD3FC;border-color:#7DD3FC}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* Secciones */
+.section{padding:4.5rem 0}
+.tint{background:var(--sky-soft)}
+.section h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800}
+.lead{max-width:40rem;color:var(--muted);font-size:1.15rem;margin:.9rem 0 0}
+.sub{font-size:1.3rem;margin:2.5rem 0 1rem}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.25rem}
+.panel{border:1px solid var(--line);border-left:6px solid var(--sky);border-radius:var(--radius);padding:1.6rem;background:#fff}
+.panel h3{font-size:1.3rem;margin-bottom:.5rem}
+.panel p{margin:0;color:var(--muted)}
+.values{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.6rem}
+.values li{background:var(--navy);color:#fff;font-weight:700;padding:.5rem 1.1rem;border-radius:999px}
+
+/* Galería */
+.gallery{list-style:none;padding:0;margin:2.25rem 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.project{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.project-media{aspect-ratio:16/10;background:var(--sky-soft)}
+.project-media img{width:100%;height:100%;object-fit:cover}
+.project-media.empty{background:repeating-linear-gradient(135deg,#F3F9FE 0 14px,#E3F1FB 14px 28px)}
+.project-body{padding:1.1rem 1.25rem 1.3rem;display:flex;flex-direction:column;gap:.8rem;align-items:flex-start}
+.project-body h3{font-size:1.1rem}
+.soon{color:var(--sky-deep);font-weight:700;font-size:.95rem}
+.gallery-note{margin:1.5rem 0 0;color:var(--muted);font-weight:600}
+
+/* Planes */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem;align-items:stretch}
+.plan{border:1px solid var(--line);border-radius:var(--radius);padding:1.75rem;display:flex;flex-direction:column;background:#fff}
+.plan h3{font-size:1.15rem;min-height:2.6em}
+.price{font:800 3.4rem/1 Sora,sans-serif;color:var(--navy);margin:1rem 0 1.25rem;letter-spacing:-.03em}
+.price span{font-size:1.2rem;font-weight:700;color:var(--sky-deep);margin-right:.25rem;letter-spacing:0}
+.plan ul{margin:0 0 1.75rem;padding:0;list-style:none;flex:1}
+.plan li{padding:.55rem 0 .55rem 1.6rem;border-top:1px solid var(--line);position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:1.05rem;width:.7rem;height:.7rem;border-radius:50%;background:var(--sky)}
+.plan .btn{text-align:center}
+
+/* Contacto */
+.contact{background:var(--navy);color:#fff}
+.contact .lead{color:#D6E6FA}
+.channels{list-style:none;padding:0;margin:2.25rem 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.channels a{display:flex;flex-direction:column;gap:.25rem;text-decoration:none;border:1px solid rgba(255,255,255,.25);border-radius:var(--radius);padding:1.4rem;transition:background .2s}
+.channels a:hover{background:rgba(255,255,255,.08)}
+.channels strong{font-family:Sora,sans-serif;font-size:1.15rem;color:var(--sky)}
+.channels span{overflow-wrap:anywhere}
+
+/* Pie */
+.site-footer{background:#07173A;color:#C4D6F0;padding:2rem 0}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
+.foot img{height:33px;width:auto}
+.foot p{margin:0;font-size:.95rem}
+
+/* Móvil */
+@media (max-width:860px){
+  .menu-toggle{display:block}
+  #menu{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:.5rem 1.25rem 1.25rem}
+  #menu.open{display:flex}
+  #menu a:not(.btn){padding:.9rem 0;border-bottom:1px solid var(--line)}
+  #menu .btn{margin-top:1rem;text-align:center}
+  .duo,.gallery,.plans,.channels{grid-template-columns:1fr}
+  .plan h3{min-height:0}
+  .hero{padding:3.5rem 0 4rem}
+  .section{padding:3.5rem 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
