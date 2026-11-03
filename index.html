@@ -146,6 +146,39 @@ a{color:inherit}
   .plan h3{min-height:0}.section{padding:4.2rem 0}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* ===== Versión animada 2 ===== */
+.hero{--gx:70%;--gy:30%}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(520px circle at var(--gx) var(--gy),rgba(29,184,215,.18),transparent 60%);pointer-events:none;transition:background .1s}
+.hero h1{animation:none;font-size:clamp(2.6rem,6.2vw,4.8rem);max-width:13ch}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
+.w>span{display:inline-block;transform:translateY(115%) rotate(4deg);animation:wordup .95s var(--ease) forwards;animation-delay:calc(var(--i)*75ms + 200ms)}
+@keyframes wordup{to{transform:none}}
+.hero-logo img{transition:transform .25s ease-out;will-change:transform}
+.marquee{background:var(--navy);color:#fff;overflow:hidden;white-space:nowrap;padding:1.05rem 0}
+.track{display:inline-flex;gap:2rem;padding-right:2rem;animation:marq 32s linear infinite;will-change:transform}
+.track span{font:700 1.35rem Sora,sans-serif;letter-spacing:-.01em}
+.track b{color:var(--sky);font-weight:400}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-25%)}}
+.hint{margin:2.2rem 0 1rem;font-weight:800;color:var(--sky-deep);display:flex;align-items:center;gap:.5rem}
+.hint span{display:inline-block;animation:nudge 1.4s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(8px)}}
+.rail{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.5rem .25rem 1.6rem;margin:0 -.25rem;cursor:grab;scrollbar-width:thin;scrollbar-color:var(--sky) var(--soft);-webkit-overflow-scrolling:touch}
+.rail.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.rail::-webkit-scrollbar{height:8px}.rail::-webkit-scrollbar-thumb{background:var(--sky);border-radius:8px}.rail::-webkit-scrollbar-track{background:var(--soft);border-radius:8px}
+.card{flex:0 0 min(380px,84vw);scroll-snap-align:start;min-height:280px}
+.card .num{display:block;font:800 3.4rem/1 Sora,sans-serif;color:transparent;-webkit-text-stroke:2px var(--sky);margin-bottom:1rem}
+.card .values{margin-top:.2rem}
+.panel,.plan{background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(29,184,215,.16),transparent 45%),#fff}
+.channels a{background:radial-gradient(380px circle at var(--mx,50%) var(--my,0%),rgba(29,184,215,.28),transparent 50%),rgba(255,255,255,.06)}
+.fab{position:fixed;right:max(1.1rem,env(safe-area-inset-right));bottom:max(1.1rem,env(safe-area-inset-bottom));z-index:65;width:3.7rem;height:3.7rem;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;box-shadow:0 14px 28px -10px rgba(14,56,96,.7);opacity:0;transform:translateY(20px) scale(.8);pointer-events:none;transition:opacity .4s,transform .4s var(--ease)}
+.fab.show{opacity:1;transform:none;pointer-events:auto}
+.fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--sky);animation:ping 2.2s ease-out infinite}
+.fab:hover{background:var(--navy-2)}
+@keyframes ping{to{transform:scale(1.7);opacity:0}}
+.btn{will-change:translate}
+@media (max-width:900px){.hero h1{font-size:clamp(2.4rem,10vw,3.4rem)}.card{min-height:0}}
 </style>
 </head>
 <body>
@@ -174,7 +207,7 @@ a{color:inherit}
       <div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div>
       <div class="wrap">
         <div>
-          <h1>Tu sitio web, creado <span class="hl">desde cero</span> y a tu medida.</h1>
+          <h1 aria-label="Tu sitio web, creado desde cero y a tu medida."><span class="w"><span style="--i:0">Tu</span></span> <span class="w"><span style="--i:1">sitio</span></span> <span class="w"><span style="--i:2">web,</span></span> <span class="w"><span style="--i:3">creado</span></span> <span class="hl"><span class="w"><span style="--i:4">desde</span></span> <span class="w"><span style="--i:5">cero</span></span> </span><span class="w"><span style="--i:6">y</span></span> <span class="w"><span style="--i:7">a</span></span> <span class="w"><span style="--i:8">tu</span></span> <span class="w"><span style="--i:9">medida.</span></span> </h1>
           <p>Ayudamos a negocios y emprendedores a tener presencia en Internet con páginas funcionales, atractivas y fáciles de usar en cualquier celular.</p>
           <div class="actions">
             <a class="btn" href="#planes">Ver planes</a>
@@ -185,26 +218,18 @@ a{color:inherit}
       </div>
     </section>
 
+    <div class="marquee" aria-hidden="true"><div class="track"><span>Creatividad</span><b>✦</b><span>Compromiso</span><b>✦</b><span>Calidad</span><b>✦</b><span>Comunicación</span><b>✦</b><span>Confianza</span><b>✦</b><span>Creatividad</span><b>✦</b><span>Compromiso</span><b>✦</b><span>Calidad</span><b>✦</b><span>Comunicación</span><b>✦</b><span>Confianza</span><b>✦</b><span>Creatividad</span><b>✦</b><span>Compromiso</span><b>✦</b><span>Calidad</span><b>✦</b><span>Comunicación</span><b>✦</b><span>Confianza</span><b>✦</b><span>Creatividad</span><b>✦</b><span>Compromiso</span><b>✦</b><span>Calidad</span><b>✦</b><span>Comunicación</span><b>✦</b><span>Confianza</span><b>✦</b></div></div>
     <section id="conocenos" class="section">
       <div class="wrap">
         <h2>Conócenos</h2>
         <p class="lead">En Smartpage creamos sitios web personalizados desde cero para ayudar a negocios y emprendedores a tener presencia en Internet.</p>
 
-        <div class="duo">
-          <article class="panel">
-            <h3>Misión</h3>
-            <p>Crear sitios web funcionales y atractivos que ayuden a nuestros clientes a presentar y hacer crecer sus negocios.</p>
-          </article>
-          <article class="panel">
-            <h3>Visión</h3>
-            <p>Ser una opción confiable e innovadora para la creación de sitios web en República Dominicana y más allá.</p>
-          </article>
+        <p class="hint">Arrastra para explorar <span aria-hidden="true">→</span></p>
+        <div class="rail" id="rail" tabindex="0" aria-label="Misión, visión y valores">
+          <article class="panel card"><span class="num" aria-hidden="true">01</span><h3>Misión</h3><p>Crear sitios web funcionales y atractivos que ayuden a nuestros clientes a presentar y hacer crecer sus negocios.</p></article>
+          <article class="panel card"><span class="num" aria-hidden="true">02</span><h3>Visión</h3><p>Ser una opción confiable e innovadora para la creación de sitios web en República Dominicana y más allá.</p></article>
+          <article class="panel card"><span class="num" aria-hidden="true">03</span><h3>Valores</h3><ul class="values"><li>Creatividad</li><li>Compromiso</li><li>Calidad</li><li>Comunicación</li><li>Confianza</li></ul></article>
         </div>
-
-        <h3 class="sub">Nuestros valores</h3>
-        <ul class="values">
-          <li>Creatividad</li><li>Compromiso</li><li>Calidad</li><li>Comunicación</li><li>Confianza</li>
-        </ul>
       </div>
     </section>
 
@@ -289,6 +314,9 @@ a{color:inherit}
       <p>© <span id="year">2026</span> Smartpage. Todos los derechos reservados.</p>
     </div>
   </footer>
+  <a class="fab" id="fab" href="https://wa.me/18496330597" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+  </a>
 
   <script type="module">
 /* ---------- Configuración de Supabase ----------
@@ -420,6 +448,50 @@ loadProjects();
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
   els.forEach(function(el){var i=Array.prototype.indexOf.call(el.parentElement.children,el);
     el.style.setProperty('--d',(i*90)+'ms');el.classList.add('reveal');io.observe(el)});
+})();
+</script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var hover=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var fab=document.getElementById('fab');
+  addEventListener('scroll',function(){fab.classList.toggle('show',scrollY>500)},{passive:true});
+
+  /* arrastrar para explorar */
+  var rail=document.getElementById('rail'),down=false,sx=0,sl=0,moved=false;
+  rail.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=rail.scrollLeft;rail.classList.add('drag')});
+  addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>3)moved=true;rail.scrollLeft=sl-dx});
+  addEventListener('pointerup',function(){if(!down)return;down=false;rail.classList.remove('drag')});
+
+  /* contador de precios */
+  function count(p){var t=p.lastChild;if(!t||t.nodeType!==3)return;var n=parseInt(t.textContent,10);if(isNaN(n))return;
+    var t0=null;function f(ts){if(t0===null)t0=ts;var k=Math.min((ts-t0)/1100,1);t.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)}
+    t.textContent='0';requestAnimationFrame(f)}
+  if(!reduce&&'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){count(e.target);io.unobserve(e.target)}})},{threshold:.6});
+    document.querySelectorAll('.price').forEach(function(p){io.observe(p)});
+  }
+  if(reduce||!hover)return;
+
+  /* luz que sigue el cursor en tarjetas */
+  document.addEventListener('pointermove',function(e){
+    var c=e.target.closest&&e.target.closest('.plan,.panel,.channels a');if(!c)return;
+    var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
+
+  /* portada: luz, inclinación 3D y parallax */
+  var hero=document.querySelector('.hero'),logo=document.querySelector('.hero-logo img'),b1=document.querySelector('.b1'),b2=document.querySelector('.b2');
+  hero.addEventListener('pointermove',function(e){
+    var r=hero.getBoundingClientRect();hero.style.setProperty('--gx',(e.clientX-r.left)+'px');hero.style.setProperty('--gy',(e.clientY-r.top)+'px');
+    var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    logo.style.transform='perspective(800px) rotateY('+(x*14)+'deg) rotateX('+(-y*14)+'deg) scale(1.03)'});
+  hero.addEventListener('pointerleave',function(){logo.style.transform=''});
+  addEventListener('scroll',function(){var y=scrollY;if(y<1400){b1.style.translate='0 '+(y*.22)+'px';b2.style.translate='0 '+(-y*.12)+'px'}},{passive:true});
+
+  /* botones magnéticos */
+  document.querySelectorAll('.hero .btn,.contact .btn,.plan .btn,.fab').forEach(function(b){
+    b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();
+      b.style.translate=((e.clientX-r.left-r.width/2)*.22)+'px '+((e.clientY-r.top-r.height/2)*.3)+'px'});
+    b.addEventListener('pointerleave',function(){b.style.translate=''})});
 })();
 </script>
 </body>
