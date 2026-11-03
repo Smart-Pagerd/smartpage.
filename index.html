@@ -179,6 +179,25 @@ a{color:inherit}
 @keyframes ping{to{transform:scale(1.7);opacity:0}}
 .btn{will-change:translate}
 @media (max-width:900px){.hero h1{font-size:clamp(2.4rem,10vw,3.4rem)}.card{min-height:0}}
+
+.reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.reason{min-height:230px}
+.reason .num{display:block;font:800 2.6rem/1 Sora,sans-serif;color:transparent;-webkit-text-stroke:2px var(--sky);margin-bottom:.9rem}
+.reason h3{font-size:1.2rem;margin-bottom:.5rem}
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.vs{border-radius:var(--radius);padding:2rem;border:1px solid var(--line);background:#fff;transition:transform .35s var(--ease)}
+.vs:hover{transform:translateY(-6px)}
+.vs h3{font-size:1.4rem;margin-bottom:1rem}
+.vs ul{list-style:none;margin:0;padding:0}
+.vs li{position:relative;padding:.75rem 0 .75rem 2rem;border-top:1px solid var(--line)}
+.vs li::before{position:absolute;left:0;top:.75rem;font-weight:800}
+.vs.no{color:var(--muted)}
+.vs.no li::before{content:"✕";color:#7A8BA6}
+.vs.yes{background:var(--navy);border-color:var(--navy);color:#fff}
+.vs.yes li{border-color:rgba(255,255,255,.2)}
+.vs.yes li::before{content:"✓";color:var(--sky)}
+.cta-line{text-align:center;margin:3rem 0 0}
+@media (max-width:900px){.reasons,.versus{grid-template-columns:1fr}.reason{min-height:0}}
 </style>
 </head>
 <body>
@@ -196,7 +215,7 @@ a{color:inherit}
       <nav id="menu" aria-label="Principal">
         <a href="#conocenos">Conócenos</a>
         <a href="#creaciones">Nuestras Creaciones</a>
-        <a href="#planes">Planes</a>
+        <a href="#porque">¿Por qué una web?</a>
         <a class="btn btn-small" href="#contacto">Contáctanos</a>
       </nav>
     </div>
@@ -210,7 +229,7 @@ a{color:inherit}
           <h1 aria-label="Tu sitio web, creado desde cero y a tu medida."><span class="w"><span style="--i:0">Tu</span></span> <span class="w"><span style="--i:1">sitio</span></span> <span class="w"><span style="--i:2">web,</span></span> <span class="w"><span style="--i:3">creado</span></span> <span class="hl"><span class="w"><span style="--i:4">desde</span></span> <span class="w"><span style="--i:5">cero</span></span> </span><span class="w"><span style="--i:6">y</span></span> <span class="w"><span style="--i:7">a</span></span> <span class="w"><span style="--i:8">tu</span></span> <span class="w"><span style="--i:9">medida.</span></span> </h1>
           <p>Ayudamos a negocios y emprendedores a tener presencia en Internet con páginas funcionales, atractivas y fáciles de usar en cualquier celular.</p>
           <div class="actions">
-            <a class="btn" href="#planes">Ver planes</a>
+            <a class="btn" href="#porque">¿Por qué una web?</a>
             <a class="btn btn-ghost" href="#creaciones">Ver creaciones</a>
           </div>
         </div>
@@ -242,44 +261,45 @@ a{color:inherit}
       </div>
     </section>
 
-    <section id="planes" class="section">
+    <section id="porque" class="section">
       <div class="wrap">
-        <h2>Planes</h2>
-        <p class="lead">Elige el plan que mejor se adapte a tu proyecto.</p>
-        <div class="plans">
-          <article class="plan">
-            <h3>Creación web</h3>
-            <p class="price"><span>US$</span>100</p>
-            <ul>
-              <li>Creación del sitio web y su base de datos</li>
-              <li>No incluye mantenimiento</li>
-            </ul>
-            <a class="btn" target="_blank" rel="noopener noreferrer"
-               href="https://wa.me/18496330597?text=Hola%2C%20quiero%20consultar%20por%20el%20plan%20Creaci%C3%B3n%20web%20(US%24100)">Consultar por WhatsApp</a>
-          </article>
-
-          <article class="plan">
-            <h3>Creación + mantenimiento por 1 mes</h3>
-            <p class="price"><span>US$</span>180</p>
-            <ul>
-              <li>Creación del sitio web y su base de datos</li>
-              <li>Mantenimiento durante un mes</li>
-            </ul>
-            <a class="btn" target="_blank" rel="noopener noreferrer"
-               href="https://wa.me/18496330597?text=Hola%2C%20quiero%20consultar%20por%20el%20plan%20Creaci%C3%B3n%20%2B%20mantenimiento%20por%201%20mes%20(US%24180)">Consultar por WhatsApp</a>
-          </article>
-
-          <article class="plan">
-            <h3>Creación + mantenimiento por 6 meses</h3>
-            <p class="price"><span>US$</span>900</p>
-            <ul>
-              <li>Creación del sitio web y su base de datos</li>
-              <li>Mantenimiento durante seis meses</li>
-            </ul>
-            <a class="btn" target="_blank" rel="noopener noreferrer"
-               href="https://wa.me/18496330597?text=Hola%2C%20quiero%20consultar%20por%20el%20plan%20Creaci%C3%B3n%20%2B%20mantenimiento%20por%206%20meses%20(US%24900)">Consultar por WhatsApp</a>
-          </article>
+        <h2>¿Por qué tener una página web?</h2>
+        <p class="lead">Hoy, mucha gente busca en Internet antes de comprar o contratar. Tu página web es la forma de estar ahí cuando te buscan.</p>
+        <div class="reasons">
+          <article class="panel reason"><span class="num" aria-hidden="true">01</span><h3>Te encuentran a cualquier hora</h3><p>Tu negocio no cierra. Quien te busca de noche o en fin de semana encuentra tu información sin tener que esperar.</p></article>
+          <article class="panel reason"><span class="num" aria-hidden="true">02</span><h3>Genera confianza</h3><p>Un sitio propio muestra que tu negocio es serio y está bien establecido, y ayuda a que te tomen en cuenta desde el primer vistazo.</p></article>
+          <article class="panel reason"><span class="num" aria-hidden="true">03</span><h3>Muestra lo que haces</h3><p>Tus servicios, productos o trabajos en un solo lugar, presentados a tu manera y siempre actualizados.</p></article>
+          <article class="panel reason"><span class="num" aria-hidden="true">04</span><h3>Facilita el contacto</h3><p>Botones directos a WhatsApp, correo e Instagram para que tus clientes te escriban con un solo toque.</p></article>
+          <article class="panel reason"><span class="num" aria-hidden="true">05</span><h3>Es tu propio espacio</h3><p>Tu marca, tu estilo y tus reglas, sin depender únicamente de las redes sociales.</p></article>
+          <article class="panel reason"><span class="num" aria-hidden="true">06</span><h3>Te ayuda a crecer</h3><p>Llegas a personas que todavía no te conocen y tu negocio puede avanzar más allá de tu zona.</p></article>
         </div>
+      </div>
+    </section>
+
+    <section id="contraste" class="section tint">
+      <div class="wrap">
+        <h2>Tu negocio, con y sin página web</h2>
+        <div class="versus">
+          <div class="vs no">
+            <h3>Sin página web</h3>
+            <ul>
+              <li>Dependes de que te conozcan por recomendación.</li>
+              <li>La información de tu negocio queda dispersa.</li>
+              <li>Fuera de tu horario, nadie te atiende.</li>
+              <li>Cuesta más que te tomen en serio.</li>
+            </ul>
+          </div>
+          <div class="vs yes">
+            <h3>Con página web</h3>
+            <ul>
+              <li>Te encuentran justo cuando te buscan.</li>
+              <li>Todo tu negocio reunido en un solo enlace.</li>
+              <li>Tu sitio atiende las 24 horas.</li>
+              <li>Proyectas una imagen profesional y confiable.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="cta-line"><a class="btn" href="https://wa.me/18496330597?text=Hola%2C%20quiero%20crear%20mi%20p%C3%A1gina%20web" target="_blank" rel="noopener noreferrer">Quiero mi página web</a></p>
       </div>
     </section>
 
