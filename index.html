@@ -198,6 +198,8 @@ a{color:inherit}
 .vs.yes li::before{content:"✓";color:var(--sky)}
 .cta-line{text-align:center;margin:3rem 0 0}
 @media (max-width:900px){.reasons,.versus{grid-template-columns:1fr}.reason{min-height:0}}
+.project-media.live{position:relative}
+.project-media.live iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
 </style>
 </head>
 <body>
@@ -376,6 +378,9 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 const gallery = document.querySelector('#gallery');
 const note = document.querySelector('#gallery-note');
 
+/* Proyecto fijo en el primer espacio de la galería */
+const FEATURED = { name: 'Chic aura', url: 'https://chic-aura.github.io/', preview: true };
+
 const isSafeUrl = (value) => {
   try {
     const u = new URL(value);
@@ -391,7 +396,18 @@ function projectCard(p) {
 
   const media = document.createElement('div');
   media.className = 'project-media';
-  if (p.image_url && isSafeUrl(p.image_url)) {
+  if (p.preview) {
+    const frame = document.createElement('iframe');
+    frame.src = p.url;
+    frame.title = `Vista previa de ${p.name}`;
+    frame.loading = 'lazy';
+    frame.tabIndex = -1;
+    frame.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+    media.classList.add('live');
+    media.append(frame);
+    const fit = () => { frame.style.transform = `scale(${media.clientWidth / 1280})`; };
+    new ResizeObserver(fit).observe(media);
+  } else if (p.image_url && isSafeUrl(p.image_url)) {
     const img = document.createElement('img');
     img.src = p.image_url;
     img.alt = `Vista previa de ${p.name}`;
@@ -424,7 +440,8 @@ function projectCard(p) {
 
 function showPlaceholders() {
   gallery.replaceChildren();
-  for (let i = 0; i < 3; i++) {
+  gallery.append(projectCard(FEATURED));
+  for (let i = 0; i < 2; i++) {
     const li = document.createElement('li');
     li.className = 'project placeholder';
     li.innerHTML =
@@ -434,7 +451,7 @@ function showPlaceholders() {
     gallery.append(li);
   }
   note.textContent =
-    'Estamos preparando nuestras primeras creaciones. Muy pronto las verás publicadas aquí.';
+    'Estamos preparando más creaciones. Muy pronto las verás publicadas aquí.';
   note.hidden = false;
 }
 
@@ -447,7 +464,7 @@ async function loadProjects() {
       .eq('published', true)
       .order('created_at', { ascending: false });
     if (error || !data || data.length === 0) return showPlaceholders();
-    gallery.replaceChildren(...data.map(projectCard));
+    gallery.replaceChildren(...[FEATURED, ...data.filter((p) => p.url !== FEATURED.url)].map(projectCard));
     note.hidden = true;
   } catch {
     showPlaceholders();
