@@ -424,8 +424,11 @@ document.querySelector('#year').textContent = new Date().getFullYear();
 const gallery = document.querySelector('#gallery');
 const note = document.querySelector('#gallery-note');
 
-/* Proyecto fijo en el primer espacio de la galería */
-const FEATURED = { name: 'Chic aura', url: 'https://chic-aura.github.io/', preview: true };
+/* Proyectos fijos al inicio de la galería (agrega más aquí) */
+const FEATURED_LIST = [
+  { name: 'Chic aura', url: 'https://chic-aura.github.io/', preview: true },
+  { name: 'Fragancias DLS', url: 'https://smart-pagerd.github.io/DLS/', preview: true },
+];
 
 const isSafeUrl = (value) => {
   try {
@@ -486,8 +489,8 @@ function projectCard(p) {
 
 function showPlaceholders() {
   gallery.replaceChildren();
-  gallery.append(projectCard(FEATURED));
-  for (let i = 0; i < 2; i++) {
+  FEATURED_LIST.forEach((p) => gallery.append(projectCard(p)));
+  for (let i = 0; i < Math.max(0, 3 - FEATURED_LIST.length); i++) {
     const li = document.createElement('li');
     li.className = 'project placeholder';
     li.innerHTML =
@@ -510,7 +513,8 @@ async function loadProjects() {
       .eq('published', true)
       .order('created_at', { ascending: false });
     if (error || !data || data.length === 0) return showPlaceholders();
-    gallery.replaceChildren(...[FEATURED, ...data.filter((p) => p.url !== FEATURED.url)].map(projectCard));
+    const fixed = FEATURED_LIST.map((f) => f.url);
+    gallery.replaceChildren(...[...FEATURED_LIST, ...data.filter((p) => !fixed.includes(p.url))].map(projectCard));
     note.hidden = true;
   } catch {
     showPlaceholders();
